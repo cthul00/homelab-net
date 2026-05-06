@@ -13,6 +13,11 @@ graph TD
         USW[USW 2.5G PoE Switch]
     end
 
+    subgraph Wireless ["Wireless Access"]
+      U7[U7 Pro]
+      U6[U6 LR]
+    end
+
     %% Physical Connections
     UDM -- "Port 1 (Tagged: 10,20,30)" --- Caddy
     UDM -- "Port 2 (PoE)" --- U7
@@ -20,11 +25,6 @@ graph TD
 
     subgraph Services ["Services"]
         Caddy[Raspberry Pi: Caddy]
-    end
-
-    subgraph Wireless ["Wireless Access"]
-        U7[U7 Pro]
-        U6[U6 LR]
     end
 
     subgraph VLANs ["Logical Networks"]
@@ -44,7 +44,7 @@ graph TD
     Caddy -.-> V30
 
     %% Traffic Rules
-    UDM == "Port Forward 443" ==> Caddy
+    UDM --- "Port Forward 443" --- Caddy
 ```
 
 ### Overview
