@@ -1,0 +1,6 @@
+.env
+.secret
+.key
+*.secret
+*.key
+.gemini/
