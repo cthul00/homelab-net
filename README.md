@@ -27,9 +27,6 @@ graph TD
         U6[U6 LR]
     end
 
-    %% Connection from Switch
-    USW -- "Port 1 (PoE)" --- U6
-
     subgraph VLANs ["Logical Networks"]
         V10[VLAN 10: Roommate 1]
         V20[VLAN 20: Roommate 2]
@@ -47,7 +44,7 @@ graph TD
     Caddy -.-> V30
 
     %% Traffic Rules
-    UDM == "Port Forward 80/443" ==> Caddy
+    UDM == "Port Forward 443" ==> Caddy
 ```
 
 ### Overview
@@ -56,12 +53,11 @@ This repository documents the home network architecture, hardware configurations
 - **VLANs 10-30:** Dedicated isolated networks for each roommate.
 - **VLAN 40:** IoT, Smart Home, and Edge devices.
 - **VLAN 50:** Guest network.
-- **Reverse Proxy:** A Raspberry Pi running Caddy is connected to **Port 1 of the UDM Pro** with VLAN tagging for VLANs 10, 20, and 30. It handles incoming traffic via port forwarding from the UDM Pro to serve internal services to the internet.
+- **Reverse Proxy:** A Raspberry Pi running Caddy w/ Cloudflare DNS is connected to **Port 1 of the UDM Pro** with VLAN tagging for VLANs 10, 20, and 30. It handles incoming traffic via port forwarding from the UDM Pro to serve internal services to the internet.
 
 ### Hardware Mapping
 | Device | Physical Connection | Notes |
 | :--- | :--- | :--- |
 | **Raspberry Pi (Caddy)** | UDM Pro Port 1 | Tagged VLANs 10, 20, 30 |
 | **U7 Pro** | UDM Pro Port 2 | PoE Powered |
-| **USW 2.5G PoE** | UDM Pro Downlink | Core Switch |
-| **U6 LR** | USW Switch Port 1 | PoE Powered |
+| **U6 LR** | USW 2.5G PoE Port 1 | Core Switch |
