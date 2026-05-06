@@ -44,7 +44,7 @@ graph TD
     Caddy -.-> V30
 
     %% Traffic Rules
-    UDM --- "Port Forward 443" --- Caddy
+    UDM --- "Port Forward 443" --> Caddy
 ```
 
 ### Overview
