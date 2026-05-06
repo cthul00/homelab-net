@@ -13,10 +13,10 @@ graph TD
         USW[USW 2.5G PoE Switch]
     end
 
-    %% Physical Connections from UDM
+    %% Physical Connections
     UDM -- "Port 1 (Tagged: 10,20,30)" --- Caddy
     UDM -- "Port 2 (PoE)" --- U7
-    UDM -- "Downlink" --- USW
+    USW -- "Port 1 (PoE)" --- U6
 
     subgraph Services ["Services"]
         Caddy[Raspberry Pi: Caddy]
